@@ -4,15 +4,16 @@ Install [Audify](https://audifyplayer.com) — a free music and video player for
 library — on macOS:
 
 ```sh
-brew install --cask ashishkp010/tap/audify
-```
-
-Or tap first, then install by short name:
-
-```sh
 brew tap ashishkp010/tap
+brew trust ashishkp010/tap
 brew install --cask audify
 ```
+
+**The `brew trust` step is required and cannot be skipped.** Recent Homebrew versions refuse
+to load casks from third-party taps until you explicitly trust them, with the message
+"Refusing to load cask … from untrusted tap". That is Homebrew protecting users from
+arbitrary code in unreviewed taps — it is not a warning about Audify specifically, and it
+applies to every tap outside the official repositories.
 
 Upgrade along with everything else:
 
@@ -65,9 +66,16 @@ official submission would be rejected today.
 A tap has no gatekeeper, works with the same `brew install --cask` command users expect,
 and stays entirely under Audify's control.
 
-**The official route may be open after all — worth trying.** Homebrew's policy exempts
-"a popular app that has their own website" from the repository notability bar, since the
-*app* can be notable even when the repo is not. Audify Android has 100M+ downloads and 4.5
-stars, which is a strong case. The tap costs nothing and works today, so ship it first —
-then submit this same cask file to `homebrew-cask` unchanged, citing the install numbers.
-Acceptance there would put Audify in front of every Mac user running `brew search`.
+**The official route is worth pursuing, and the trust prompt is why.** A tap costs users
+three commands and shows them the word "untrusted"; an official cask is one command and no
+warning. That difference matters more than it looks for a consumer app.
+
+Homebrew's policy exempts "a popular app that has their own website" from the repository
+notability bar, since the *app* can be notable even when the repo is not. The honest
+caveat: Audify's 100M+ downloads are on **Android**, while this cask installs the macOS
+build, which is new and has its own much smaller install base. A maintainer could
+reasonably treat those as different products, so treat acceptance as uncertain rather than
+likely.
+
+This cask passes `brew audit --cask --online` cleanly, so it is technically ready to submit
+whenever the Mac build has a track record worth citing.
