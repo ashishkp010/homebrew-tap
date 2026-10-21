@@ -3,9 +3,9 @@ cask "audify" do
   # existing appcast feeds, so this mapping must not change without updating the feeds.
   arch arm: "", intel: "-Intel"
 
-  version "1.0.23"
-  sha256 arm:   "ca2ecb4a4be0b36e380e0d94276d5304f900727b4f412551815ed7fd6163b2dc",
-         intel: "326dc0b9ac47ae2299e2ce2db8cf291df9c1052137a66ec52079b8ef6b8281a5"
+  version "1.1.3"
+  sha256 arm:   "efca4544fa139635b233321523c0f7832de9a3b7efa68591e790b8e454ed6b93",
+         intel: "86049db6a87fdf39a69bd80879920c2878dbfc51ed111ef63d85e4978a884f7d"
 
   url "https://download.audifyplayer.com/Audify-#{version}#{arch}.dmg",
       verified: "download.audifyplayer.com/"
